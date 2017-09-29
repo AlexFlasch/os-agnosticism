@@ -1,0 +1,48 @@
+@mixin text-gradient($gradient, $bg: 'dark') {
+  @supports((background-clip: text) or (-webkit-background-clip: text)) and ((text-fill-color: transparent) or (-webkit-text-fill-color: transparent)) {
+    background: unquote($gradient);
+    
+    color: #000;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  @supports not (((background-clip: text) or (-webkit-background-clip: text)) and ((text-fill-color: transparent) or (-webkit-text-fill-color: transparent))) {
+    @supports(mix-blend-mode: lighten) {
+      display: inline-block;
+      position: relative;
+      
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        
+        background: unquote($gradient);
+        pointer-events: none;
+      }
+
+      @if ($bg == 'light') {
+        color: #000;
+        background: #fff;
+        mix-blend-mode: multiply;
+
+        &::before {
+          mix-blend-mode: screen;
+        }
+      } @else {
+        color: #fff;
+        background: #000;
+        mix-blend-mode: lighten;
+
+        &::before {
+          mix-blend-mode: multiply;
+        }
+      }
+    }
+  }
+}
