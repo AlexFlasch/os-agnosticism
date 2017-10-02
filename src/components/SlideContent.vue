@@ -30,6 +30,11 @@
     width: 45%;
   }
   
+  &.move-up {
+    // negative margins are such an ugly hack :|
+    margin-top: -7.5%;
+  }
+  
   img {
     width: 100%;
     height: auto;

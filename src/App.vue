@@ -56,7 +56,7 @@ body {
       <Slide class="no-margin differences">
         <SlideTitle>Differences</SlideTitle>
         <SlideContent>
-          <div class="img-container lg">
+          <div class="img-container lg move-up">
             <img class="meme" src="./assets/doggo-guide.jpg" alt="guide to doggos">
           </div>
           <p class="left">
